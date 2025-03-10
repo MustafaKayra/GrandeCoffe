@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>{{ coffe.name }}</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+      <!-- fevicon -->
+      <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- owl stylesheets --> 
+      <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">   
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+   <body>
+      <!--header section start -->
+      <div class="header_section">
+         <div class="container-fluid">
+         {% if request.user.is_authenticated %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <div class="logo"><a href="{% url 'index' %}"><h1 class="navbar-h1">Grande Coffe</h1></a></div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" href="/">Anasayfa</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#contact">İletişim</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'coffes' %}">Kahveler</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'order' %}">Sepet</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blogs' %}">Bloglar</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'updateuser' %}">Kullanıcı Bilgileri</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logoutuser' %}">Çıkış Yap</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         {% else %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <div class="logo"><a href="{% url 'index' %}"><h1 class="navbar-h1">Grande Coffe</h1></a></div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Anasayfa</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#contact">İletişim</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'coffes' %}">Kahveler</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blogs' %}">Bloglar</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Kayıt Ol</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Giriş Yap</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         {% endif %}
+         </div>
+      </div>
+      <!--header section end -->
+      <!-- about section start -->
+      <div class="about_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="about_taital_main">
+                     {% if messages %}
+                
+                        {% for message in messages %}
+                        {% if message.tags == "info" %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                        {% else %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+                        {% endif %}
+
+
+                        {% endfor %}
+                     
+                     {% endif %}
+                     <div class="about_taital">{{ coffe.name }}</div>
+                     <p class="about_text">{{ coffe.description }}</p>
+                     <div class="coffe-price"><a href="">{{ coffe.price }} TL</a></div>
+                     <form method="post">
+                     {% csrf_token %}
+                     {% for optionel in coffe.optionels.all %}
+                        <p class="optionel_name">{{ optionel.name }}</p>
+                        <div class="btn-group btn-group-toggle option_choices" data-toggle="buttons">
+                           {% for option in optionel.option_set.all %}
+                              <label class="btn btn-outline-primary">
+                                 <input class="btn-check" type="radio" name="options" value="{{ option.id }}" autocomplete="off">
+                                 {{ option.name }}
+                              </label>
+                           {% endfor %}
+                        </div>
+                     {% endfor %}
+                        <p class="piece_name">Kahve Sayısı</p>
+                        <select class="custom-select my-1 mr-sm-2 piece_choice" id="inlineFormCustomSelectPref" name="piece">
+                           <option value="1" selected>1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                        </select>
+                        <button type="submit" class="btn btn-success button_about">Sipariş Ver</button>
+                     </form>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                     <img src="{{ coffe.image.image.url }}" alt="{{ coffe.image }}" class="coffe-image">                
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- about section end -->
+      <!-- footer section start -->
+      <div class="footer_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-3 col-sm-6">
+                  <h3 class="useful_text">Hakkımızda</h3>
+                  <p class="footer_text">Grande Coffee olarak, dünyanın dört bir yanından en kaliteli kahve çekirdeklerini özenle seçiyor, her yudumda unutulmaz bir deneyim sunuyoruz. Kahve sanatını tutkuyla icra ediyor, sizlere huzurlu bir ortamda eşsiz lezzetler vaat ediyoruz.</p>
+               </div>
+               <div class="col-lg-3 col-sm-6">
+                  <h3 class="useful_text">Menü</h3>
+                  <div class="footer_menu">
+                     <ul>
+                        <li><a href="/">Anasayfa</a></li>
+                        <li><a href="{% url 'coffes' %}">Kahveler</a></li>
+                        <li><a href="">Bloglar</a></li>
+                        <li><a href="{% url 'register' %}">Kayıt Ol</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-sm-6">
+                  <h3 class="useful_text">Linkler</h3>
+                  <div class="footer_menu">
+                     <ul>
+                     {% for footercoffe in footercoffes %}
+                        <li><a href="{% url 'coffesdetail' footercoffe.slug %}">{{ footercoffe.name }}</a></li>
+                     {% endfor %}
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-sm-6">
+                  <h1 class="useful_text">İletişim</h1>
+                  <div class="location_text">
+                     <ul>
+                        <li>
+                           <a href="#">
+                           <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_10">Address : Loram Ipusm</span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#">
+                           <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">Call : +01 1234567890</span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#">
+                           <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">Email : m.toker2009@gmail.com</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- footer section end -->
+      <!-- copyright section start -->
+      <div class="copyright_section">
+         <div class="container">
+            <p class="copyright_text"><a href="https://www.linkedin.com/in/mustafa-kayra-toker-b89247283/">Mustafa Kayra Toker</a> tarafından geliştirildi</p>
+         </div>
+      </div>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'js/plugin.js' %}"></script>
+      <!-- sidebar -->
+      <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>     
+   </body>
+</html>
