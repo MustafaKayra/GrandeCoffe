@@ -120,11 +120,12 @@
                         {% endfor %}
                      
                      {% endif %}
-                     <div class="about_taital">{{ coffe.name }}</div>
-                     <p class="about_text">{{ coffe.description }}</p>
+                     <div class="coffedetail_taital">{{ coffe.name }}</div>
+                     <p class="coffedetail_text">{{ coffe.description }}</p>
                      <div class="coffe-price"><a href="">{{ coffe.price }} TL</a></div>
                      <form method="post">
                      {% csrf_token %}
+                     <div class="option_group">
                      {% for optionel in coffe.optionels.all %}
                         <p class="optionel_name">{{ optionel.name }}</p>
                         <div class="btn-group btn-group-toggle option_choices" data-toggle="buttons">
@@ -136,6 +137,7 @@
                            {% endfor %}
                         </div>
                      {% endfor %}
+                     </div>
                         <p class="piece_name">Kahve Sayısı</p>
                         <select class="custom-select my-1 mr-sm-2 piece_choice" id="inlineFormCustomSelectPref" name="piece">
                            <option value="1" selected>1</option>
@@ -147,7 +149,7 @@
                      </form>
                   </div>
                </div>
-               <div class="col-md-6">
+               <div class="col-md-6 coffe_image_group">
                      <img src="{{ coffe.image.image.url }}" alt="{{ coffe.image }}" class="coffe-image">                
                </div>
             </div>

@@ -284,6 +284,17 @@ button {
     background-repeat: no-repeat;
 }
 
+@media (max-width: 768px) {
+    .banner_section {
+        width: 100%;
+        float: left;
+        background-image: url(../images/banner-bg.png);
+        height: auto;
+        background-size: 400px 300px !important;
+        background-repeat: no-repeat;
+    }
+}
+
 .banner_taital {
     width: 100%;
     float: left;
@@ -307,6 +318,19 @@ button {
     padding-bottom: 0px;
 }
 
+@media (max-width: 768px) {
+    .coffee_text {
+        width: 50%;
+        float: left;
+        font-size: 30px !important;
+        white-space: nowrap !important;
+        color: #fdfcfa;
+        font-weight: bold;
+        padding-bottom: 0px;
+        margin-top: -130px;
+    }
+}
+
 .there_text {
     width: 50%;
     float: left;
@@ -316,10 +340,46 @@ button {
     padding-bottom: 30px;
 }
 
+@media (max-width: 768px) {
+    .there_text {
+        width: 80% !important;
+        float: left;
+        font-size: 16px;
+        color: #fff;
+        margin: 0px;
+        margin-top: -80px;
+    }
+}
+
 .learnmore_bt {
     display: block; /* İçeriğe göre genişliği belirler */
     width: fit-content;
     margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .learnmore_bt {
+        display: block; /* İçeriğe göre genişliği belirler */
+        width: fit-content;
+        margin-top: 20px;
+    }
+
+    .learnmore_bt a {
+        width: 70% !important;
+        float: left !important;
+        padding-right: 0 !important;
+        background-color: #f76d37 !important;
+        color: #fff !important;
+        text-align: center !important;
+        margin-right: 45px !important;
+        margin-left: 10px;
+        height: 40px !important;
+        padding: 10px 40px 0px 15px !important;
+        font-size: 12px !important;
+        text-transform: uppercase !important;
+        border-radius: 20px !important;
+        white-space: nowrap !important;
+    }
 }
 
 .learnmore_bt a {
@@ -391,6 +451,18 @@ button {
     padding: 120px 0px;
 }
 
+@media (max-width: 768px) {
+    .about_taital {
+        width: 100%;
+        float: right;
+        font-size: 40px;
+        color: #f76d37;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: -50px !important;
+    }
+}
+
 .about_taital {
     width: 100%;
     float: right;
@@ -400,13 +472,15 @@ button {
     text-transform: uppercase;
 }
 
-.about_text {
-    width: 100%;
-    float: right;
-    font-size: 16px;
-    color: #4c4c4b;
-    margin: 0px;
-    padding-top: 10px;
+@media (max-width: 768px) {
+    .about_text {
+        width: 100%;
+        float: right;
+        font-size: 16px;
+        color: #000000;
+        margin: 0px;
+        padding-top: 10px;
+    }
 }
 
 .about_text {
@@ -427,7 +501,27 @@ button {
 .coffe-price {
     width: 175px;
     float: left;
-    padding-top: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .coffe-price {
+        width: 55px !important;
+        float: left !important;
+        padding-top: 30px !important;
+    }
+
+    .coffe-price a {
+        width: 100% !important;
+        float: left !important;
+        font-size: 10px !important;
+        background-color: #f76d37 !important;
+        color: #000000 !important;
+        text-align: center !important;
+        padding: 8px !important;
+        border-radius: 10px !important;
+    }
 }
 
 .coffe-price a {
@@ -503,12 +597,49 @@ button {
     background-color: #f76d37;
 }
 
+.option_group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+    margin-top: 300px;
+}
+
 .option_choices {
-    width: 105px;
-    float: left;
-    padding-top: 120px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin-left: -170px;
-    color: #000000 !important;
+    color: #000000;
+    left: 170px;
+}
+
+.option_choices label {
+    width: 150px !important;
+    font-size: 16px !important;
+    padding: 5px 10px; /* İçeriği rahatça okur hale getirir */
+    text-align: center; /* Yazıyı ortalar */
+    box-sizing: border-box;
+    height: 35px;
+}
+
+@media (max-width: 768px) {
+    .option_choices {
+        width: 100% !important; /* Ekran genişliğine uyum sağlar */
+        display: flex !important; /* Flexbox düzeni kullanarak elemanları yatayda hizalar */
+        flex-wrap: nowrap; /* İçeriğin taşmaması için satırlara kaymasına izin verir */
+        box-sizing: border-box !important;
+        color: #020202 !important;
+        margin-left: 0 !important; /* Sol margin'i sıfırladık */
+    }
+
+    .option_choices label {
+        width: 100px !important;
+        font-size: 10px !important;
+        padding: 5px 10px; /* İçeriği rahatça okur hale getirir */
+        text-align: center; /* Yazıyı ortalar */
+        box-sizing: border-box;
+        height: 30px;
+    }
 }
 
 .option_choices .btn-outline-primary {
@@ -534,6 +665,24 @@ button {
     border-color: #f76d37 !important;
     box-shadow: none !important;
     outline: none;
+}
+
+@media (max-width: 768px) {
+    .piece_choice {
+        color: #000000 !important;
+        width: 85px !important;
+        height: 30px !important;
+        text-align: center;
+        border-color: #f76d37 !important;
+        box-shadow: none !important;
+        outline: none !important;
+        position: relative;
+        top: 60px;
+        right: -6px;
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+    }
 }
 
 .piece_choice {
@@ -585,9 +734,22 @@ button {
 
 .optionel_name {
     color: #000000;
-    position: relative;
-    top: 130px;
-    left: -165px;
+    font-size: 14px !important;
+    white-space: nowrap;
+    margin: 0px !important;
+    
+}
+
+
+
+@media (max-width: 768px) {
+    .optionel_name {
+        color: #000000;
+        font-size: 10px;
+        margin-left: 173px !important;
+        position: relative;
+        top: 80px;
+    }
 }
 
 .order_img {
@@ -631,6 +793,18 @@ button {
     font-size: 40px;
     color: #f76d37;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .gallery_taital {
+        width: 100%;
+        float: left;
+        text-align: center;
+        font-size: 40px;
+        color: #f76d37;
+        font-weight: bold;
+        margin-top: -70px !important;
+    }
 }
 
 .gallery_text {
@@ -711,6 +885,28 @@ img.image {
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .seemore_bt {
+        width: 100% !important;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        white-space: nowrap;
+        line-height: normal;
+    }
+
+    .seemore_bt a {
+        width: 100%;
+        text-align: center;
+        font-size: 14px !important;
+        color: #ffffff;
+        background-color: #f76d37 !important;
+        padding: 10px 0px;
+        margin-top: 40px;
+        border-radius: 20px !important;
+    }
+}
+
 .seemore_bt {
     width: 320px;
     margin: 0 auto;
@@ -751,6 +947,29 @@ a:hover {
     padding-bottom: 150px;
     background-attachment: fixed;
     background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .service_section {
+        width: 100%;
+        float: left;
+        background-image: url(../images/espresso-short-glass-wooden-background_235573-311.avif) !important;
+        height: auto;
+        padding-bottom: 100px;
+        background-attachment: fixed;
+        background-size: cover !important;
+        background-position: 50% center !important;
+        margin-top: 70px !important;
+    }
+
+    .services_taital {
+        width: 100%;
+        float: left;
+        font-size: 40px;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: center;
+    }
 }
 
 .service_section {
@@ -860,6 +1079,16 @@ a:hover {
     box-shadow: 0px 0px 18px -6px;
 }
 
+@media (max-width: 768px) {
+    .box_main {
+        width: 100%;
+        height: 320px;
+        background-color: #f76d37;
+        padding: 40px 30px;
+        box-shadow: 0px 0px 18px -6px;
+    }
+}
+
 .box_main:hover .decorate_text {
     color: #000;
 }
@@ -933,6 +1162,27 @@ a:hover {
     float: left;
 }
 
+@media (max-width: 768px) {
+    .client_taital {
+        width: 100%;
+        float: left;
+        font-size: 40px;
+        text-align: center;
+        color: #f76d37;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .client_text {
+        width: 100% !important;
+        font-size: 15px !important;
+        color: #252525;
+        margin: 0 auto;
+        margin-right: 10px !important;
+        text-align: center;
+    }
+}
+
 .client_taital {
     width: 100%;
     float: left;
@@ -997,6 +1247,33 @@ a:hover {
     font-weight: bold;
 }
 
+@media (max-width: 768px) {
+    .client_name_text {
+        width: 70% !important;
+        float: left;
+        font-size: 18px !important;
+        color: #252525;
+        text-transform: uppercase;
+        padding-left: 100px;
+        font-weight: bold;
+        white-space: nowrap !important;
+    }
+
+    .customer_text {
+        width: 100%;
+        float: left;
+        font-size: 12px !important;
+        color: #252525;
+        margin: 0px;
+        word-wrap: break-word;  /* Uzun kelimeleri böler */
+    }
+}
+
+.client_date {
+    color: #252525 !important;
+    font-size: 16px !important;
+}
+
 .quick_icon {
     text-align: right;
     padding-left: 30px;
@@ -1041,6 +1318,14 @@ a:hover {
     float: left;
 }
 
+@media (max-width: 768px) {
+    .contact_section {
+        width: 100%;
+        float: left;
+        margin-top: -130px;
+    }
+}
+
 .contact_text {
     width: 100%;
     float: left;
@@ -1048,6 +1333,18 @@ a:hover {
     text-align: center;
     color: #f76d37;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .contact_section_2 {
+        width: 100%;
+        float: right;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        position: relative;
+        top: 10px !important;
+        margin-top: -90px !important;
+    }
 }
 
 .contact_section_2 {
@@ -1353,14 +1650,16 @@ a:hover {
 }
 
 .register-h1 {
-    text-align: center;
+    position: relative;
+    right: -350px;
     font-size: 50px;
     font-weight: bold;
     color: #f76d37;
 }
 
 .register-paragraph {
-    text-align: center;
+    position: relative;
+    left: -120px;
     font-size: 20px;
     color: #000000;
     white-space: nowrap;
@@ -1371,24 +1670,16 @@ a:hover {
 }
 
 .register-h3 {
-    text-align: center;
+    position: relative;
+    right: -380px;
     font-size: 27px;
     font-weight: bold;
 }
 
 .register-payment-paragraph {
-    text-align: center;
+    position: relative;
+    right: -378px;
     font-size: 18px;
-}
-
-.container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    max-width: 100% !important;
-    padding: 0 15px !important; /* Kenarlardan içerik taşmasını önler */
-    box-sizing: border-box !important;
 }
 
 .login-paragraph {
@@ -1411,10 +1702,35 @@ a:hover {
     border-radius: 20px;
 }
 
+.parent-container {
+    position: relative; /* Üst öğeyi sabitler */
+}
+
+
+
+.coffe_image_group {
+
+}
+
+@media (max-width: 768px) {
+    .coffe_image_group {
+        position: relative;
+    }
+
+    .coffe-image {
+        width: 200px !important;
+        height: 150px !important;
+        top: -680px !important;
+        left: 55px;
+        border-radius: 20px;
+        z-index: 99 !important;
+    }
+}
+
 .coffe-image {
     width: 700px;
     height: 400px;
-    position: relative;
+    position: absolute;
     top: 150px;
     border-radius: 20px;
 }
@@ -1422,8 +1738,20 @@ a:hover {
 .piece_name {
     color: #000000;
     position: relative;
-    left: -165px;
-    top: 190px;
+    margin-left: 10px;
+    position: relative;
+    top: 70px;
+}
+
+@media (max-width: 768px) {
+    .piece_name {
+        color: #000000;
+        position: relative;
+        margin-left: 7px;
+        position: relative;
+        top: 75px;
+        font-size: 14px !important;
+    }
 }
 
 .cart-h1 {
@@ -1473,6 +1801,54 @@ a:hover {
     font-size: 18px;
     position: relative;
     right: -390px;
+}
+
+.coffedetail_taital {
+    width: 100%;
+    float: right;
+    font-size: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    color: #f76d37;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.coffedetail_text {
+    width: 100%;
+    float: right;
+    font-size: 21px;
+    padding-bottom: 20px;
+    color: #000000;
+    margin: 0px;
+    padding-top: 10px;
+    flex-wrap: wrap !important;
+    max-width: 900px;
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .coffedetail_text {
+        width: 100%;
+        float: right;
+        font-size: 13px;
+        color: #000000;
+        margin: 0px;
+        padding-top: 10px;
+        flex-wrap: wrap !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .coffedetail_taital {
+        width: 100%;
+        float: right;
+        font-size: 20px;
+        color: #f76d37;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 120px;
+    }
 }
 
 /* copyright section end */

@@ -250,9 +250,9 @@
                    <div class="row">
                       <div class="col-md-12">
                          <div class="testimonial_section_2">
-                            <h4 class="client_name_text">{{ lastblog.author }} <span class="quick_icon"><img src="{% static 'images/quick-icon.png' %}"></span></h4>
+                            <h4 class="client_name_text">{{ lastblog.author }}</h4>
                               <p class="customer_text">{{ lastblog.content.first.content|truncatechars:300 }}</p>
-                              <p>{{ lastblog.date }}</p>
+                              <p class="client_date">{{ lastblog.date }}</p>
                          </div>
                       </div>
                    </div>
