@@ -509,7 +509,8 @@ button {
     .coffe-price {
         width: 55px !important;
         float: left !important;
-        padding-top: 30px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
     }
 
     .coffe-price a {
@@ -614,7 +615,7 @@ button {
 }
 
 .option_choices label {
-    width: 150px !important;
+    width: 200px !important;
     font-size: 16px !important;
     padding: 5px 10px; /* İçeriği rahatça okur hale getirir */
     text-align: center; /* Yazıyı ortalar */
@@ -623,22 +624,27 @@ button {
 }
 
 @media (max-width: 768px) {
+    .option_group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px !important;
+    }
+
     .option_choices {
         width: 100% !important; /* Ekran genişliğine uyum sağlar */
-        display: flex !important; /* Flexbox düzeni kullanarak elemanları yatayda hizalar */
-        flex-wrap: nowrap; /* İçeriğin taşmaması için satırlara kaymasına izin verir */
-        box-sizing: border-box !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
         color: #020202 !important;
-        margin-left: 0 !important; /* Sol margin'i sıfırladık */
+        margin-left: -170px !important; /* Sol margin'i sıfırladık */
     }
 
     .option_choices label {
-        width: 100px !important;
+        width: 100% !important;
         font-size: 10px !important;
         padding: 5px 10px; /* İçeriği rahatça okur hale getirir */
         text-align: center; /* Yazıyı ortalar */
         box-sizing: border-box;
-        height: 30px;
+        height: 25px;
     }
 }
 
@@ -667,6 +673,20 @@ button {
     outline: none;
 }
 
+.piece_group {
+    
+}
+
+@media (max-width: 768px){
+    .piece_group {
+        display: flex;
+        flex-direction: column;
+        margin-top: -40px;
+        margin-left: 85px;
+    }
+}
+
+
 @media (max-width: 768px) {
     .piece_choice {
         color: #000000 !important;
@@ -676,10 +696,6 @@ button {
         border-color: #f76d37 !important;
         box-shadow: none !important;
         outline: none !important;
-        position: relative;
-        top: 60px;
-        right: -6px;
-        display: flex;
         align-items: center;
         border-radius: 10px;
     }
@@ -718,6 +734,23 @@ button {
 
 }
 
+@media (max-width: 768px) {
+    .button_about {
+        background-color: #f76d37;
+        color: #000000;
+        border-color: #f76d37;
+        display: flex !important;
+        flex-direction: column !important;
+        margin-top: 130px !important;
+        margin-left: 180px;
+        font-size: 20px;
+        width: 130px !important;
+        position: relative;
+        top: 0px !important;
+        border-radius: 20px;
+    }
+}
+
 .button_about:hover {
     background-color: #f76d37;
     color: #000000;
@@ -744,11 +777,10 @@ button {
 
 @media (max-width: 768px) {
     .optionel_name {
-        color: #000000;
-        font-size: 10px;
-        margin-left: 173px !important;
-        position: relative;
-        top: 80px;
+        color: #000000 !important;
+        font-size: 10px !important;
+        white-space: nowrap !important;
+        margin: 0px !important;
     }
 }
 
@@ -1713,17 +1745,31 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+
     .coffe_image_group {
-        position: relative;
+        position: absolute !important;
+        top: 35px !important; /* Navbarın hemen altına yerleştir */
+        left: 64% !important;
+        transform: translateX(-50%); /* Yatayda ortala */
+        transition: none !important;
+    }
+
+    #navbarNav.navbar-collapse.collapse.show + .coffe_image_group {
+        margin-top: 150px !important; /* Navbar açılınca resim aşağı kayacak */
+        
     }
 
     .coffe-image {
         width: 200px !important;
         height: 150px !important;
-        top: -680px !important;
-        left: 55px;
         border-radius: 20px;
-        z-index: 99 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body:has(#navbarNav.show) .coffe_image_group {
+        top: 370px !important;
+        transition: none !important;
     }
 }
 

@@ -138,6 +138,7 @@
                         </div>
                      {% endfor %}
                      </div>
+                     <div class="piece_group">
                         <p class="piece_name">Kahve Sayısı</p>
                         <select class="custom-select my-1 mr-sm-2 piece_choice" id="inlineFormCustomSelectPref" name="piece">
                            <option value="1" selected>1</option>
@@ -145,12 +146,13 @@
                            <option value="3">3</option>
                            <option value="4">4</option>
                         </select>
-                        <button type="submit" class="btn btn-success button_about">Sipariş Ver</button>
+                     </div>
+                     <button type="submit" class="btn btn-success button_about">Sipariş Ver</button>
                      </form>
                   </div>
                </div>
                <div class="col-md-6 coffe_image_group">
-                     <img src="{{ coffe.image.image.url }}" alt="{{ coffe.image }}" class="coffe-image">                
+                  <img src="{{ coffe.image.image.url }}" alt="{{ coffe.image }}" class="coffe-image">                
                </div>
             </div>
          </div>
@@ -226,6 +228,7 @@
       <script src="{% static 'js/plugin.js' %}"></script>
       <!-- sidebar -->
       <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
-      <script src="{% static 'js/custom.js' %}"></script>     
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script src="{% static 'js/navbar.js' %}"></script>
    </body>
 </html>
