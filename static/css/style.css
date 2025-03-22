@@ -445,6 +445,19 @@ button {
     float: left;
 }
 
+.shoppingcart_section {
+    width: 100%;
+    float: left;
+}
+
+@media (max-width: 768px) {
+    .shoppingcart_section {
+        width: 100%;
+        float: left;
+        padding-bottom: 0px !important;
+    }
+}
+
 .about_taital_main {
     width: 100%;
     float: left;
@@ -549,6 +562,34 @@ button {
 .read_bt a:hover {
     color: #ffffff;
     background-color: #f76d37;
+}
+
+@media (max-width: 768px) {
+    .order_taital_main {
+        width: 100%;
+        float: left;
+        padding: 120px 0px;
+        position: relative;
+        right: 0px !important;
+    }
+    
+    .order_taital {
+        width: 100%;
+        float: right;
+        font-size: 20px !important;
+        color: #f76d37;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    .order_text {
+        width: 100%;
+        float: right;
+        font-size: 12px;
+        color: #4c4c4b;
+        margin: 0px;
+        padding-top: 10px;
+    }
 }
 
 .order_taital_main {
@@ -797,6 +838,21 @@ button {
     border-radius: 20px;
 }
 
+@media (max-width: 768px) {
+    .order_img {
+        margin-top: -660px !important;
+        left: 0px !important;
+    }
+
+    .cart-image {
+        width: 600px !important;
+        height: 300px !important;
+        position: relative;
+        top: 0px !important;
+        border-radius: 20px;
+    }
+}
+
 .cartelse-h3 {
     font-size: 25px;
     position: relative;
@@ -805,6 +861,21 @@ button {
 
 .cartelse-h3 a {
     color: #f76d37;
+}
+
+@media (max-width: 768px) {
+    .cartelse-h3 {
+        font-size: 20px;
+        position: relative;
+        right: 0px !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-bottom: -145px !important;
+    }
+    
+    .cartelse-h3 a {
+        color: #f76d37;
+    }
 }
 
 
@@ -829,13 +900,25 @@ button {
 
 @media (max-width: 768px) {
     .gallery_taital {
-        width: 100%;
-        float: left;
-        text-align: center;
-        font-size: 40px;
-        color: #f76d37;
-        font-weight: bold;
-        margin-top: -70px !important;
+        width: 100% !important;
+        float: left !important;
+        text-align: center !important;
+        font-size: 20px !important;
+        color: #f76d37 !important;
+        margin-bottom: 10px;
+        padding-top: 60px;
+        font-weight: bold !important;
+        
+    }
+
+    .gallery_text {
+        width: 100% !important;
+        float: left !important;
+        font-size: 16px !important;
+        text-align: center !important;
+        color: #262525 !important;
+        padding-top: 40px !important;
+        word-wrap: break-word !important;  /* Uzun kelimeleri böler */
     }
 }
 
@@ -854,6 +937,33 @@ button {
     width: 100%;
     float: left;
     padding-top: 50px;
+}
+
+.blogs_taital {
+    width: 100%;
+    float: left;
+    text-align: center;
+    font-size: 40px;
+    color: #f76d37;
+    font-weight: bold;
+}
+
+.blogs_text {
+    width: 100%;
+    float: left;
+    font-size: 20px;
+    text-align: center;
+    margin: 0px;
+    padding-top: 20px;
+    color: #262525;
+    word-wrap: break-word;  /* Uzun kelimeleri böler */
+}
+
+.blogs_name {
+    text-align: center;
+    color: #f76d37;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .image {
@@ -1488,7 +1598,6 @@ a:hover {
     border-color: #000000 !important;
     pointer-events: auto !important;
     opacity: 1 !important;
-    overflow: visible !important;
     position: relative;
     z-index: 1000;
 }
@@ -1517,6 +1626,20 @@ a:hover {
     opacity: 1 !important;
 }
 
+@media (max-width: 768px) {
+    .payment-bt {
+        color: #080707;
+        width: 180%;
+        height: 35px;
+        font-size: 13px;
+        margin-left: -60px !important;
+        border: 1px solid black;
+        border-radius: 30px;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+    }
+}
+
 .paymentmassage-bt {
     color: #080707;
     width: 100%;
@@ -1529,8 +1652,29 @@ a:hover {
 
 .payment_btn {
     width: 170px;
-    margin: 0 auto;
-    text-align: center;
+    margin: 0 auto !important;
+}
+
+@media (max-width: 768px) {
+    .payment_btn {
+        width: 170px !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+        height: 50px !important;
+        font-size: 10px !important;
+    }
+}
+
+.updateuser_btn {
+    width: 170px;
+    margin: 0 auto !important;
+}
+
+@media (max-width: 768px ) {
+    .updateuser_btn {
+        width: 170px;
+        margin: 0 auto !important;
+    }
 }
 
 /* contact section end */
@@ -1681,12 +1825,44 @@ a:hover {
     font-size: 18px;
 }
 
+.login-h1 {
+    position: relative;
+    right: -350px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #f76d37;
+}
+
+@media (max-width: 768px) {
+    .login-h1 {
+        text-align: center !important;
+        float: left !important;
+        margin-left: -363px !important;
+        margin-top: -60px !important;
+        font-size: 40px;
+        font-weight: bold;
+        color: #f76d37;
+    }
+}
+
 .register-h1 {
     position: relative;
     right: -350px;
     font-size: 50px;
     font-weight: bold;
     color: #f76d37;
+}
+
+@media (max-width: 768px) {
+    .register-h1 {
+        text-align: center !important;
+        float: left !important;
+        margin-left: -353px !important;
+        margin-top: -60px !important;
+        font-size: 40px;
+        font-weight: bold;
+        color: #f76d37;
+    }
 }
 
 .register-paragraph {
@@ -1701,16 +1877,63 @@ a:hover {
     color: #f76d37;
 }
 
+@media (max-width: 768px) {
+    .register-paragraph {
+        width: 190% !important;
+        margin-left: 50px !important;
+        float: center !important;
+        text-align: center !important;
+        font-size: 15px;
+        color: #000000;
+        white-space: inherit !important;
+    }
+    
+    .register-paragraph a {
+        color: #f76d37;
+    }
+}
+
 .register-h3 {
     position: relative;
-    right: -380px;
+    right: -300px;
     font-size: 27px;
     font-weight: bold;
 }
 
+@media (max-width: 768px) {
+    .register-h3 {
+        float: left !important;
+        white-space: nowrap !important;
+        font-size: 27px !important;
+        font-weight: bold !important;
+        right: 70px !important;
+        
+    }
+
+    .register-payment-paragraph {
+        right: 0px !important;
+        font-size: 14px;
+        width: 180% !important;
+    }
+}
+
+.register_btn {
+    width: 170px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .register_btn {
+        width: 170px !important;
+        margin-left: 10px;
+        height: 50px !important;
+        font-size: 10px !important;
+    }
+}
+
 .register-payment-paragraph {
-    position: relative;
-    right: -378px;
+    text-align: center !important;
+    margin-left: -55px;
     font-size: 18px;
 }
 
@@ -1723,6 +1946,21 @@ a:hover {
 
 .login-paragraph a {
     color: #f76d37;
+}
+
+@media (max-width: 768px) {
+    .login-paragraph {
+        width: 100%;
+        color: #000000;
+        font-size: 20px !important;
+        text-align: center !important;
+        margin-left: -140px !important;
+        flex-wrap: nowrap !important;
+    }
+    
+    .login-paragraph a {
+        color: #f76d37;
+    }
 }
 
 .login-button {
@@ -1808,9 +2046,26 @@ a:hover {
     color: #f76d37;
 }
 
+@media (max-width: 768px) {
+    .cart-h1 {
+        font-size: 50px;
+        font-weight: bold;
+        text-align: center !important;
+        right: 0px !important;
+        color: #f76d37;
+    }
+}
+
 .cart-deletecartbutton {
     position: relative;
     right: -475px;
+}
+
+@media (max-width: 768px) {
+    .cart-deletecartbutton {
+        position: relative;
+        right: -97px !important;
+    }
 }
 
 .cartsuccess-button {
@@ -1822,11 +2077,32 @@ a:hover {
     border-radius: 20px;
 }
 
+@media (max-width: 768px) {
+    .cartsuccess-button {
+        background-color: #f76d37 !important;
+        border-color: #f76d37 !important;
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+        border-radius: 20px;
+        margin-left: -15px !important;
+    }
+}
+
 .cart-h3 {
     font-size: 25px;
     position: relative;
     right: -450px;
     top: -10px;
+}
+
+@media (max-width: 768px) {
+    .cart-h3 {
+        font-size: 25px;
+        position: relative;
+        right: -12px !important;
+        top: 0px !important;
+    }
 }
 
 .updateuser-h1 {
@@ -1840,13 +2116,60 @@ a:hover {
 .updateuser-h3 {
     font-size: 25px;
     position: relative;
-    right: -410px;
+    right: -340px;
+    font-weight: bold;
 }
 
 .updateuser-paragraph {
     font-size: 18px;
     position: relative;
-    right: -390px;
+    right: -327px;
+}
+
+.updateuser-button {
+    background-color: #f76d37 !important;
+    border-color: #f76d37 !important;
+    font-size: 20px;
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    .updateuser-h1 {
+        right: 75px !important;
+        font-size: 30px;
+        color: #f76d37;
+        font-weight: bold;
+        text-align: center !important;
+        width: 200%;
+    }
+    
+    .updateuser-h3 {
+        font-size: 25px;
+        position: relative;
+        right: 62px !important;
+        font-weight: bold !important;
+        width: 200% !important;
+    }
+    
+    .updateuser-paragraph {
+        font-size: 15px;
+        position: relative;
+        right: 55px !important;
+        width: 200% !important;
+        margin-top: -10px !important;
+    }
+
+    .updateuser-button {
+        background-color: #f76d37 !important;
+        border-color: #f76d37 !important;
+        font-size: 20px;
+        width: 120px;
+        height: 50px;
+        border-radius: 20px;
+        margin-left: 15px !important;
+    }
 }
 
 .coffedetail_taital {

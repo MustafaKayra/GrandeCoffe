@@ -130,12 +130,12 @@
          {% for blogcontent in blog.content.all %}
             <div class="row">
                <div class="col-sm-12">
-                  <br>
                   {% if blogcontent.name %}
                      <h2 class="gallery_taital">{{ blogcontent.name }}</h2>
                   {% else %}
                   {% endif %}
                   <p class="gallery_text">{{ blogcontent.content }}</p>
+                  <hr>
                </div>
             </div>
          {% endfor %}

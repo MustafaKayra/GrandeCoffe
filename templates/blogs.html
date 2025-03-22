@@ -119,8 +119,8 @@
                     {% endfor %}
                 
                {% endif %}
-                  <h1 class="gallery_taital">Bloglar</h1>
-                  <p class="gallery_text">Kahveler İle İlgili Tüm Bloglarımıza Buradan Ulaşabilirsiniz</p>
+                  <h1 class="blogs_taital">Bloglar</h1>
+                  <p class="blogs_text">Kahveler İle İlgili Tüm Bloglarımıza Buradan Ulaşabilirsiniz</p>
                </div>
             </div>
             <div class="">
@@ -130,7 +130,7 @@
                      <div class="col-md-4">
                         <div class="container_main">
                            <img src="{{ blogs.image.url }}" alt="Blog Kapak Resmi" class="blog-image">
-                           <h3>{{ blogs.name }}</h3>
+                           <h3 class="blogs_name">{{ blogs.name }}</h3>
                            <div class="overlay">
                               <div class="text"><a href="{% url 'blog' blogs.slug %}"><i class="fa fa-search" aria-hidden="true"></i></a></div>
                            </div>

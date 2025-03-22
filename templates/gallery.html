@@ -119,8 +119,8 @@
                     {% endfor %}
                 
                   {% endif %}
-                  <h1 class="gallery_taital">Kahveler</h1>
-                  <p class="gallery_text">Site Üzerinde Sizlere Sunduğumuz Tüm Kahvelere Buradan Ulaşabilirsiniz.</p>
+                  <h1 class="blogs_taital">Kahveler</h1>
+                  <p class="blogs_text">Site Üzerinde Sizlere Sunduğumuz Tüm Kahvelere Buradan Ulaşabilirsiniz.</p>
                </div>
             </div>
             <div class="">
@@ -130,7 +130,7 @@
                      <div class="col-md-4">
                         <div class="container_main">
                            <img src="{{ coffes.image.image.url }}" alt="Avatar" class="blog-image">
-                           <h2>{{ coffes.name }}</h2>
+                           <h2 class="blogs_name">{{ coffes.name }}</h2>
                            <div class="overlay">
                               <div class="text"><a href="{% url 'coffesdetail' coffes.slug %}"><i class="fa fa-search" aria-hidden="true"></i></a></div>
                            </div>

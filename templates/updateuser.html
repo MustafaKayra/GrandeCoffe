@@ -151,10 +151,10 @@
                         </div>
                      </div>
                   </div>
-                  <h3 class="updateuser-h3">Kart ve Adres Bilgileri</h3>
-                  <p class="updateuser-paragraph">Sipariş Vermek İçin Gereklidir!</p>
                   <div class="paymentform_section">
                      <div class="payment_text">
+                     <h3 class="updateuser-h3">Kart ve Adres Bilgileri</h3>
+                     <p class="updateuser-paragraph">Sipariş Vermek İçin Gereklidir!</p>
                         <div class="form-group">
                            {% if request.user.address %}
                               <input type="text" class="payment-bt" placeholder="Adres" name="address" id="address" value="{{ request.user.address }}">
@@ -211,8 +211,8 @@
                               <input type="text" class="payment-bt" placeholder="CVC" name="cvc" id="cvc">
                            {% endif %}
                         </div>
-                        <div class="payment_btn">
-                           <button type="submit" class="btn btn-success login-button">Gönder</button>
+                        <div class="updateuser_btn">
+                           <button type="submit" class="btn btn-success updateuser-button">Gönder</button>
                         </div>
                      </div>
                   </div>
