@@ -47,7 +47,7 @@
                         <a class="nav-link" href="/">Anasayfa</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#contact">İletişim</a>
+                        <a class="nav-link" href="{% url 'index' %}#contact">İletişim</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="{% url 'coffes' %}">Kahveler</a>
@@ -79,7 +79,7 @@
                         <a class="nav-link" href="{% url 'index' %}">Anasayfa</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#contact">İletişim</a>
+                        <a class="nav-link" href="{% url 'index' %}#contact">İletişim</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="{% url 'coffes' %}">Kahveler</a>
@@ -112,7 +112,7 @@
             {% if message.tags == "info" %}
             <div class="alert alert-danger">{{ message }}</div>
             {% else %}
-            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            <div class="alert alert-{{ message.tags }} messagealertsshoppingcart">{{ message }}</div>
 
             {% endif %}
 
@@ -122,7 +122,10 @@
          {% endif %}
          <h1 class="cart-h1">Sepet</h1>
          {% if cart %}
-            <button type="submit" class="btn btn-danger cart-deletecartbutton" name="deleteallcoffeincart">Sepeti Sil</button>
+            <form method="post">
+            {% csrf_token %}
+               <button type="submit" class="btn btn-danger cart-deletecartbutton" name="deleteallcoffeincart">Sepeti Sil</button>
+            </form>
             <hr>
             {% for cartitem in cart.orderitems.all %}
                <div class="row">

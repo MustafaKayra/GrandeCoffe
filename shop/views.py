@@ -8,6 +8,7 @@ from blogs.forms import Contactform
 import iyzipay
 import json
 from django.contrib import messages
+from django.core.mail import send_mail
 
 def index(request):
     toprated = Item.objects.order_by('-numberofsales')[:3]
@@ -32,6 +33,9 @@ def index(request):
     return render(request,"index.html",context)
 
 def order(request):
+    if not request.user.is_authenticated:
+        messages.warning(request,"Sitemize Giriş Yapmadan Kahve Sipariş Edemezsiniz!")
+        return redirect('login')
     footercoffes = Item.objects.order_by('-numberofsales')[:4]
     cart = ShoppingCart.objects.filter(customer=request.user).first()
     if not cart:
@@ -44,6 +48,8 @@ def order(request):
     if request.method == "POST":
         if "deleteallcoffeincart" in request.POST:
             cart.delete()
+            messages.warning(request,"Sepet Başarıyla Silindi")
+            return redirect('order')
         options = {
             'api_key': 'sandbox-LC3nNJCVAqA1QZYlFSreYK5VO3nYIDlE',
             'secret_key': 'sandbox-kOflXwc5MbTldBKuogFADjFlrQlKsMfS',
@@ -99,17 +105,27 @@ def order(request):
             
         ]
 
-        
+        total_price_calculated = 0
+
         for items in cart.orderitems.all():
+            item_total_price = items.item.price * items.piece
+
             basket_item = {
                 "id": str(items.item.id),
                 "name": items.item.name,
                 "category1": str([option.optionels.name for option in items.options.all()]),
                 "category2": str([option.name for option in items.options.all()]),
                 "itemType": 'PHYSICAL',
-                "price": str(totalprice)
+                "price": str(item_total_price),
+                "quantity": str(items.piece) 
             }
-        basket_items.append(basket_item)
+            print(f"Ürün Sayısı: {items.piece}")
+            total_price_calculated += item_total_price  # Toplam tutarı hesapla
+            basket_items.append(basket_item)
+        
+        if total_price_calculated != totalprice:
+            raise ValueError(f"Gönderilen toplam fiyat ({totalprice}) ile hesaplanan toplam fiyat ({total_price_calculated}) uyuşmuyor!")
+
 
         payment_request = {
             'locale': 'tr', #Dil ve yerel ayar
@@ -137,11 +153,24 @@ def order(request):
                 items.item.numberofsales += items.piece
                 items.item.save()
                 print(items.item.numberofsales)
+            admin_emails = list(CustomUser.objects.filter(is_staff=True).values_list("email", flat=True))
+
+            subject = f"Yeni Sipariş Alındı 🚀 ID:{cart.id}"
+            message = f"""
+            Yeni Bir Sipraiş Alındı!
+
+            Müşteri: {customer.first_name} {customer.last_name}
+            
+            
+
+            """
+
             cart.delete()
         elif payment_result.get("status") == "failure":
             messages.warning(request,"Ödeme Başarısız Oldu. Kart Ve Adres Bilgilerinizi Kontrol Ediniz")
+            print(payment_result)
             return redirect('updateuser')
-        return JsonResponse(payment_result, safe=False)
+        return redirect('order')
     
 
     context = {
@@ -168,6 +197,9 @@ def coffesdetail(request,slug):
     form = OrderItemForm(item=coffe)
     customer = request.user
     if request.method == "POST":
+        if not request.user.is_authenticated:
+            messages.warning(request,"Sitemize Giriş Yapmadan Kahve Sipariş Edemezsin!")
+            return redirect('login')
         form = OrderItemForm(request.POST, item=coffe)
         if form.is_valid():
             order_item = form.save(commit=False)
@@ -182,6 +214,7 @@ def coffesdetail(request,slug):
             
             form.save_m2m()
             messages.success(request,"Form Başarıyla Kaydedildi")
+            return redirect('order')
         else:
             print("Form Başarısız")
             messages.warning(form.errors)
@@ -196,4 +229,5 @@ def deletecoffeincart(request,id):
     cart = get_object_or_404(ShoppingCart,customer=request.user)
     deletedcoffe = cart.orderitems.filter(id=id)
     deletedcoffe.delete()
+    messages.warning(request,"Kahve Başarıyla Sepetten Silindi")
     return redirect('order')

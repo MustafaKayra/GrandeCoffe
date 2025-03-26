@@ -13,7 +13,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request,"Kayıt Olundu")
+            messages.success(request,"Başarıyla Kayıt Olundu")
             return redirect('index')
         else:
             messages.warning(request,form.errors)
@@ -52,6 +52,9 @@ def loginuser(request):
 
 
 def updateuser(request):
+    if not request.user.is_authenticated:
+        messages.warning(request,"Sitemize Giriş Yapmadan Kullanıcı Bilgilerini Düzenleyemezsin!")
+        return redirect('login')
     footercoffes = Item.objects.order_by('-numberofsales')[:4]
     if request.method == "POST":
         form = RegisterForm(request.POST, instance=request.user)
@@ -72,6 +75,8 @@ def updateuser(request):
 
 
 def logoutuser(request):
+    if request.user.is_authenticated:
+        messages.warning(request,"Oturum Açılmamış!")
     logout(request)
     messages.warning(request,"Başarıyla Çıkış Yapıldı")
     return redirect('index')
