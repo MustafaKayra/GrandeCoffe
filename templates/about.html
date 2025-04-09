@@ -126,17 +126,17 @@
                      <form method="post">
                      {% csrf_token %}
                      <div class="option_group">
-                     {% for optionel in coffe.optionels.all %}
-                        <p class="optionel_name">{{ optionel.name }}</p>
-                        <div class="btn-group btn-group-toggle option_choices" data-toggle="buttons">
-                           {% for option in optionel.option_set.all %}
-                              <label class="btn btn-outline-primary">
-                                 <input class="btn-check" type="radio" name="options" value="{{ option.id }}" autocomplete="off">
-                                 {{ option.name }}
-                              </label>
-                           {% endfor %}
-                        </div>
-                     {% endfor %}
+                        {% for optionel in coffe.optionels.all %}
+                           <p class="optionel_name">{{ optionel.name }}</p>
+                           <div class="btn-group btn-group-toggle option_choices" data-toggle="buttons">
+                              {% for option in optionel.option_set.all %}
+                                 <label class="btn btn-outline-primary">
+                                    <input class="btn-check" type="radio" name="options" value="{{ option.id }}" autocomplete="off">
+                                    {{ option.name }}
+                                 </label>
+                              {% endfor %}
+                           </div>
+                        {% endfor %}
                      </div>
                      <div class="piece_group">
                         <p class="piece_name">Kahve Sayısı</p>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Item, Images, Optionels, Option, OrderItem, ShoppingCart
+from .models import Item, Images, Optionels, Option, OrderItem, ShoppingCart, OrderedCard
 from django import forms
 
 class OrderItemAdminForm(forms.ModelForm):
@@ -23,14 +23,28 @@ class OrderItemAdminForm(forms.ModelForm):
 
 class OrderItemAdmin(admin.ModelAdmin):
     form = OrderItemAdminForm  # Özel formu kullan
-    
 admin.site.register(OrderItem, OrderItemAdmin)
 
 
-admin.site.register(Item)
-admin.site.register(ShoppingCart)
+class ItemAdmin(admin.ModelAdmin):
+    readonly_fields = ('numberofsales',)
+    fields = ('name','description','image','optionels','price','numberofsales')
+admin.site.register(Item, ItemAdmin)
+
+
+class ShoppingCartAdmin(admin.ModelAdmin):
+    fields = ('customer','orderitems','ordered')
+    readonly_fields = ('ordered','customer')
+admin.site.register(ShoppingCart, ShoppingCartAdmin)
+
+
 admin.site.register(Images)
 admin.site.register(Option)
 admin.site.register(Optionels)
+
+
+class OrderedCardAdmin(admin.ModelAdmin):
+    fields = ('shoppingcart','complete')
+admin.site.register(OrderedCard, OrderedCardAdmin)
 
 

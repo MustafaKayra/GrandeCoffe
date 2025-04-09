@@ -50,12 +50,16 @@ class OrderItem(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        related_options = Option.objects.filter(optionels__in=self.item.optionels.all())  # Doğrudan tüm ilişkili Option'ları al
-        self.options.set(related_options)
+        if self.item:  # Eğer item seçiliyse
+            valid_options = Option.objects.filter(optionels__in=self.item.optionels.all())  
+            self.options.set(self.options.filter(pk__in=valid_options.values_list("pk", flat=True)))
+
 
 
     def __str__(self):
-        return f"{self.item} | {self.piece}"
+        options_str = ", ".join(option.name for option in self.options.all())
+        return f"{self.item} | {options_str} | {self.piece}"
+
     
     def totalprice(self):
         total = self.piece * self.item.price
@@ -70,14 +74,23 @@ class ShoppingCart(models.Model):
     customer = models.ForeignKey(settings.AUTH_USER_MODEL,null=False,blank=False,on_delete=models.CASCADE)
     orderitems = models.ManyToManyField(OrderItem,null=False,blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False,null=False,blank=False)
+    ordered = models.BooleanField(default=False,blank=False,null=False)
 
     def __str__(self):
-        return f"{self.date_created} | {self.complete}"
+        return f"{self.customer} Siparişi"
     
     def totalpricecart(self):
         return sum(order_item.totalprice() for order_item in self.orderitems.all())
     
     def totalnumberofsalespiece(self):
         return sum(order_item.numberofsalespiece() for order_item in self.orderitems.all())
+    
+
+class OrderedCard(models.Model):
+    shoppingcart = models.ForeignKey(ShoppingCart,null=False,blank=False,on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    complete = models.BooleanField(default=False,blank=False,null=False)
+
+    def __str__(self):
+        return f"{self.shoppingcart} | {self.date}"
 

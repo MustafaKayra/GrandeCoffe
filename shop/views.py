@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import JsonResponse
-from .models import Item,ShoppingCart
+from .models import Item,ShoppingCart,OrderedCard
 from users.models import CustomUser
 from blogs.models import Blog
 from .forms import OrderItemForm
@@ -37,8 +37,8 @@ def order(request):
         messages.warning(request,"Sitemize Giriş Yapmadan Kahve Sipariş Edemezsiniz!")
         return redirect('login')
     footercoffes = Item.objects.order_by('-numberofsales')[:4]
-    cart = ShoppingCart.objects.filter(customer=request.user).first()
-    if not cart:
+    cart = ShoppingCart.objects.filter(customer=request.user).last()
+    if not cart or cart.ordered == True:
         return render(request,"shoppingcartdetail.html",{"footercoffes":footercoffes})
 
     totalprice = cart.totalpricecart()
@@ -165,7 +165,9 @@ def order(request):
 
             """
 
-            cart.delete()
+            cart.ordered = True
+            cart.save()
+            OrderedCard.objects.create(shoppingcart=cart)
         elif payment_result.get("status") == "failure":
             messages.warning(request,"Ödeme Başarısız Oldu. Kart Ve Adres Bilgilerinizi Kontrol Ediniz")
             print(payment_result)
@@ -205,10 +207,16 @@ def coffesdetail(request,slug):
             order_item = form.save(commit=False)
             order_item.item = coffe
             order_item.save()
-            shopping_cart, created = ShoppingCart.objects.get_or_create(customer=customer)
+            order_item.options.set(form.cleaned_data['options'])
+            shopping_cart, created = ShoppingCart.objects.get_or_create(customer=customer,ordered=False)
 
             if not created:
-                shopping_cart.orderitems.add(order_item)
+                if shopping_cart.ordered == True:
+                    newshopping_cart = ShoppingCart.objects.create(customer=customer)
+                    newshopping_cart.orderitems.set([order_item])
+                else:
+                    shopping_cart.orderitems.add(order_item)
+
             else:
                 shopping_cart.orderitems.set([order_item])
             
