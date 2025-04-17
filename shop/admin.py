@@ -23,6 +23,9 @@ class OrderItemAdminForm(forms.ModelForm):
 
 class OrderItemAdmin(admin.ModelAdmin):
     form = OrderItemAdminForm  # Özel formu kullan
+
+    def has_module_permission(self, request):
+        return False
 admin.site.register(OrderItem, OrderItemAdmin)
 
 
@@ -33,8 +36,11 @@ admin.site.register(Item, ItemAdmin)
 
 
 class ShoppingCartAdmin(admin.ModelAdmin):
-    fields = ('customer','orderitems','ordered')
+    fields = ('customer', 'orderitems')
     readonly_fields = ('ordered','customer')
+
+    def has_module_permission(self, request):
+        return False
 admin.site.register(ShoppingCart, ShoppingCartAdmin)
 
 
@@ -45,6 +51,14 @@ admin.site.register(Optionels)
 
 class OrderedCardAdmin(admin.ModelAdmin):
     fields = ('shoppingcart','complete')
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        if obj.complete:
+            shoppingcart = obj.shoppingcart
+            for orderitem in shoppingcart.orderitems.all():
+                orderitem.delete()
+            obj.delete()
+            shoppingcart.delete()
 admin.site.register(OrderedCard, OrderedCardAdmin)
 
 

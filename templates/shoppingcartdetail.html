@@ -133,7 +133,9 @@
                      <div class="order_taital_main">
                         <div class="order_taital">{{ cartitem.item }}</div>
                         <p class="order_text">Kahve Sayısı: {{ cartitem.piece }}</p>
-                        <p class="order_option">Opsiyon: {{ cartitem.options.first }}</p>
+                        {% for option in cartitem.options.all %}
+                           <p class="order_option">Opsiyon: {{ option.optionels.name }} | {{ option.name }}</p>
+                        {% endfor %}
                         <p class="order_text">Birim Kahve Fiyatı: {{ cartitem.item.price }}</p>
                         <a href="{% url 'deletecoffeincart' cartitem.id %}"><button type="submit" class="btn btn-danger" name="delete">Öğeyi Sil</button></a>
                      </div>

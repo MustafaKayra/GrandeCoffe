@@ -131,7 +131,7 @@
                            <div class="btn-group btn-group-toggle option_choices" data-toggle="buttons">
                               {% for option in optionel.option_set.all %}
                                  <label class="btn btn-outline-primary">
-                                    <input class="btn-check" type="radio" name="options" value="{{ option.id }}" autocomplete="off">
+                                    <input type="checkbox" name="options" value="{{ option.id }}">
                                     {{ option.name }}
                                  </label>
                               {% endfor %}

@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from .models import Item,ShoppingCart,OrderedCard
 from users.models import CustomUser
 from blogs.models import Blog
-from .forms import OrderItemForm
+from .forms import OrderItemForm, DynamicOptionForm
 from blogs.forms import Contactform
 import iyzipay
 import json
@@ -208,6 +208,8 @@ def coffesdetail(request,slug):
             order_item.item = coffe
             order_item.save()
             order_item.options.set(form.cleaned_data['options'])
+            print(form.cleaned_data['options'])
+            print([opt.pk for opt in form.cleaned_data['options']])
             shopping_cart, created = ShoppingCart.objects.get_or_create(customer=customer,ordered=False)
 
             if not created:
@@ -239,3 +241,7 @@ def deletecoffeincart(request,id):
     deletedcoffe.delete()
     messages.warning(request,"Kahve Başarıyla Sepetten Silindi")
     return redirect('order')
+
+def orderedcardupdates(request):
+    if OrderedCard.complete == True:
+        OrderedCard.delete()

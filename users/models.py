@@ -28,26 +28,30 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=30,null=False,blank=False)
-    last_name = models.CharField(max_length=30,null=False,blank=False)
-    address = models.CharField(max_length=500,null=True,blank=True)
-    city = models.CharField(max_length=100,null=True,blank=True)
-    country = models.CharField(max_length=50,null=True,blank=True)
-    zipcode = models.CharField(null=True,blank=True,max_length=5)
-    gsmnumber = models.CharField(null=True,blank=True,max_length=11)
-    cardnumber = models.CharField(null=True,blank=True,max_length=16)
-    expire = models.CharField(max_length=5,null=True,blank=True)
-    cvc = models.CharField(null=True,blank=True, max_length=3)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
-    date = models.DateField(auto_now_add=True)
+    email = models.EmailField(unique=True,verbose_name="Email")
+    first_name = models.CharField(max_length=30,null=False,blank=False,verbose_name="İsim")
+    last_name = models.CharField(max_length=30,null=False,blank=False,verbose_name="Soyisim")
+    address = models.CharField(max_length=500,null=True,blank=True,verbose_name="Adres")
+    city = models.CharField(max_length=100,null=True,blank=True,verbose_name="Şehir")
+    country = models.CharField(max_length=50,null=True,blank=True,verbose_name="Ülke")
+    zipcode = models.CharField(null=True,blank=True,max_length=5,verbose_name="Posta Kodu")
+    gsmnumber = models.CharField(null=True,blank=True,max_length=11,verbose_name="Telefon Numarası")
+    cardnumber = models.CharField(null=True,blank=True,max_length=16,verbose_name="Kart Numarası")
+    expire = models.CharField(max_length=5,null=True,blank=True,verbose_name="Kart Son Kullanma tarihi")
+    cvc = models.CharField(null=True,blank=True, max_length=3,verbose_name="Güvenlik Kodu")
+    is_active = models.BooleanField(default=True,verbose_name="Kullanıcı Aktiflik Durumu")
+    is_staff = models.BooleanField(default=False,verbose_name="Kullanıcı Yönetici Paneline Giriş Yetkisi")
+    is_superuser = models.BooleanField(default=False,verbose_name="Kullanıcı Yönetici Yetkisi")
+    date = models.DateField(auto_now_add=True,verbose_name="Kullanıcı Oluşturulma Tarihi")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["first_name","last_name","password"]
 
     objects = CustomUserManager()
+
+    class Meta:
+        verbose_name = "Kullanıcı"
+        verbose_name_plural = "Kullanıcılar"
 
     def clean(self):
         """Alanların geçerliliğini kontrol eden metod"""
