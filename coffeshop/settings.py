@@ -22,11 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '75d8477820831c010a4c35a20ba75777'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1:8000").split(" ")
 
 
 # Application definition
@@ -151,14 +151,14 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"  # SMTP kullanıyoruz
-EMAIL_HOST = "smtp.gmail.com"  # Gmail SMTP sunucusu
-EMAIL_PORT = 587  # SMTP için TLS portu
-EMAIL_USE_TLS = True  # TLS kullanarak güvenli bağlantı
-EMAIL_HOST_USER = "grandescoffe@gmail.com"  # Gönderen e-posta adresin
-EMAIL_HOST_PASSWORD = "phaj bxrp umhp mfob"  # Gmail için "Uygulama Şifresi" kullan
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"  
+EMAIL_HOST = "smtp.gmail.com"  
+EMAIL_PORT = 587  
+EMAIL_USE_TLS = True  
+EMAIL_HOST_USER = "grandescoffe@gmail.com"  
+EMAIL_HOST_PASSWORD = "phaj bxrp umhp mfob"  
 
-DEFAULT_FROM_EMAIL = "grandescoffe@gmail.com"  # Gönderici e-posta adresi
+DEFAULT_FROM_EMAIL = "grandescoffe@gmail.com"  
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
