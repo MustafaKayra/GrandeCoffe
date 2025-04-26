@@ -36,3 +36,18 @@ urlpatterns = [
     path('coffes/',views.coffes,name="coffes"),
     path('<slug:slug>/',views.coffesdetail,name="coffesdetail"),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+def create_superuser():
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser(
+            username="admin",
+            email="admin@example.com",
+            password="AdminPassword123"
+        )
+
+try:
+    create_superuser()
+except Exception as e:
+    print(f"Superuser creation error: {e}")

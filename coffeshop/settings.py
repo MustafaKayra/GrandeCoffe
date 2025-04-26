@@ -82,16 +82,20 @@ WSGI_APPLICATION = 'coffeshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-
-DATABASES = {
-"default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
+
+if database_url:
+    DATABASES = {
+        "default": dj_database_url.parse(database_url)
+    }
+else:
+    # Localde çalışıyorsan fallback SQLite kullan
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 #postgresql://newgrandecoffe_postgre_user:9Zzp7IIuYjBYd61T2ACF3hBrIvdk7lEi@dpg-d02df06uk2gs73ec4lf0-a.oregon-postgres.render.com/newgrandecoffe_postgre
 
