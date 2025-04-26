@@ -40,11 +40,10 @@ urlpatterns = [
 def create_superuser():
     from django.contrib.auth import get_user_model
     User = get_user_model()
-    if not User.objects.filter(username="admin").exists():
+    if not User.objects.filter(email="admin").exists():
         User.objects.create_superuser(
-            username="admin",
-            email="admin@example.com",
-            password="AdminPassword123"
+            email="m.toker2009@gmail.com",
+            password="adminpassword123"
         )
 
 try:
