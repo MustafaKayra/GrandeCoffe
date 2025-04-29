@@ -129,11 +129,8 @@
                     {% for blogs in blog %}
                      <div class="col-md-4">
                         <div class="container_main">
-                           <img src="{{ blogs.image.url }}" alt="Blog Kapak Resmi" class="blog-image">
+                           <button><a href="{% url 'blog' blogs.slug %}"><img src="{{ blogs.image.url }}" alt="Blog Kapak Resmi" class="blog-image"></a></button>
                            <h3 class="blogs_name">{{ blogs.name }}</h3>
-                           <div class="overlay">
-                              <div class="text"><a href="{% url 'blog' blogs.slug %}"><i class="fa fa-search" aria-hidden="true"></i></a></div>
-                           </div>
                         </div>
                      </div>
                     {% endfor %}

@@ -891,12 +891,14 @@ button {
 }
 
 .gallery_taital {
-    width: 100%;
-    float: left;
-    text-align: center;
-    font-size: 40px;
-    color: #f76d37;
-    font-weight: bold;
+    width: 100% !important;
+    float: left !important;
+    text-align: center !important;
+    font-size: 30px !important;
+    margin-bottom: 40px !important;
+    padding-top: 60px !important;
+    color: #f76d37 !important;
+    font-weight: bold !important;
 }
 
 @media (max-width: 768px) {
@@ -929,7 +931,7 @@ button {
     font-size: 20px;
     text-align: center;
     margin: 0px;
-    padding-top: 20px;
+    padding-top: 40px;
     color: #262525;
     word-wrap: break-word;  /* Uzun kelimeleri böler */
 }
@@ -984,6 +986,20 @@ img.image {
 
 
 .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 89%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgb(254, 230, 220, 0.6);
+    margin: 0 auto;
+}
+
+.topratedcoffe-overlay {
     position: absolute;
     top: 0;
     bottom: 0;

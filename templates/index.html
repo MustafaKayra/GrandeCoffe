@@ -170,10 +170,7 @@
                   {% for topratedcoffe in toprated %}
                      <div class="col-md-4">
                         <div class="container_main">
-                           <img src="{{ topratedcoffe.image.image.url }}" alt="Kahve Resmi" class="blog-image">
-                           <div class="overlay">
-                              <div class="text"><a href="{% url 'coffesdetail' topratedcoffe.slug %}"><i class="fa fa-search" aria-hidden="true"></i></a></div>
-                           </div>
+                           <button><a href="{% url 'coffesdetail' topratedcoffe.slug %}"><img src="{{ topratedcoffe.image.image.url }}" alt="Kahve Resmi" class="blog-image"></a></button>
                         </div>
                         <p class="topratedcoffe-paragraph">{{ topratedcoffe.name }}</p>
                      </div>
