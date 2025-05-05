@@ -77,7 +77,17 @@ ilk önce 'python -m venv env' komutunu ardından 'env\Scripts\activate' komutun
     </tr>
   </tbody>
 </table>
-      
 
 
+# Site İçi Görseller
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_26_21.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_26_39.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_26_53.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_27_07.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_27_19.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_27_50.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_27_57.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_28_06.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_28_28.png" alt="Uygulama Ekranı" width="600"/>
+<img src="static/images/Grande Coffee - Google Chrome 5.05.2025 23_28_37.png" alt="Uygulama Ekranı" width="600"/>
 
